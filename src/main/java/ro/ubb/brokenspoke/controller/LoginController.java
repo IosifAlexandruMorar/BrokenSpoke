@@ -1,4 +1,4 @@
-package ro.ubb.brokenspoke.Controller;
+package ro.ubb.brokenspoke.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

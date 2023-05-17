@@ -1,12 +1,10 @@
-package ro.ubb.brokenspoke.Controller;
+package ro.ubb.brokenspoke.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.ubb.brokenspoke.model.Login;
 import ro.ubb.brokenspoke.model.Role;
-import ro.ubb.brokenspoke.service.LoginService;
 import ro.ubb.brokenspoke.service.RoleService;
 
 import java.util.List;
