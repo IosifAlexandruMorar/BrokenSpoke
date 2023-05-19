@@ -22,4 +22,6 @@ public interface EmployeeService {
     List<Employee> getAllEmployeesSorted(String column, String order);
 
     void initFirstEmployee();
+
+    Employee getUserLoggedIn();
 }

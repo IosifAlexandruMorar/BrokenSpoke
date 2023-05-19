@@ -80,5 +80,4 @@ public class LoginController {
         return loginService.checkPassword(user, password);
     }
 
-
 }

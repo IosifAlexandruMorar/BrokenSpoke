@@ -3,10 +3,12 @@ package ro.ubb.brokenspoke.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ro.ubb.brokenspoke.config.JwtRequestFilter;
 import ro.ubb.brokenspoke.model.BikeRepair;
 import ro.ubb.brokenspoke.model.Employee;
 import ro.ubb.brokenspoke.model.Role;
 import ro.ubb.brokenspoke.repository.EmployeeRepository;
+import ro.ubb.brokenspoke.repository.LoginRepository;
 import ro.ubb.brokenspoke.repository.RoleRepository;
 
 import java.util.ArrayList;
@@ -21,6 +23,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private LoginRepository loginRepository;
     @Override
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
@@ -88,5 +93,11 @@ public class EmployeeServiceImpl implements EmployeeService{
         employee.setRole(role);
 
         this.employeeRepository.save(employee);
+    }
+
+    @Override
+    public Employee getUserLoggedIn() {
+        String currentUserLoggedIn = JwtRequestFilter.CURRENT_USER_LOGGED_IN;
+        return loginRepository.findLoginByUserName(currentUserLoggedIn).getEmployee();
     }
 }

@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ro.ubb.brokenspoke.model.Employee;
 import ro.ubb.brokenspoke.service.EmployeeService;
@@ -25,7 +26,26 @@ public class EmployeeController {
         }
     }
 
+    //only for employees is available this page
     @GetMapping("/employee")
+    @PreAuthorize("hasRole('Employee')")
+    public String forEmployee() {
+        return "Welcome, ";
+    }
+
+    //only for admins is available this page
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('Admin')")
+    public String forAdmin() {
+        return "Welcome, ";
+    }
+
+    @GetMapping("/userLoggedIn")
+    public Employee getUserLoggedIn(){
+        return this.employeeService.getUserLoggedIn();
+    }
+
+    @GetMapping("/employees")
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> employeeList = employeeService.getAllEmployees();
         return ResponseEntity.ok().body(employeeList);
