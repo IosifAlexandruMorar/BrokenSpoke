@@ -22,4 +22,6 @@ public interface LoginService {
     List<Login> filterLoginsByStatus(Boolean status);
 
     Boolean checkPassword(String user, String password);
+
+    void initFirstLongin();
 }

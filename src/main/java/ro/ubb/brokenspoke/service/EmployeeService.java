@@ -20,4 +20,6 @@ public interface EmployeeService {
     List<Employee> filterEmployeesByLastName(String predicate);
 
     List<Employee> getAllEmployeesSorted(String column, String order);
+
+    void initFirstEmployee();
 }

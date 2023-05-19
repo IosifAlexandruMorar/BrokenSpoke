@@ -1,5 +1,6 @@
 package ro.ubb.brokenspoke.controller;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,12 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
-
+    @PostConstruct
+    public void initFirstRole(){
+        if(this.roleService.getAllRoles().isEmpty()){
+            this.roleService.initFirstRole();
+        }
+    }
 
     @GetMapping("/role")
     public ResponseEntity<List<Role>> getAllRoles() {

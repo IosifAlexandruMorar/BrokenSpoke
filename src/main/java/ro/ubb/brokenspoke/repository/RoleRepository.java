@@ -5,4 +5,5 @@ import ro.ubb.brokenspoke.model.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
+    Role findRoleByRoleName(String name);
 }

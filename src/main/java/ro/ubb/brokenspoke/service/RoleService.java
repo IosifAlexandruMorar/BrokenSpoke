@@ -17,4 +17,6 @@ public interface RoleService {
 
     Role getRoleById(Long id);
 
+    void initFirstRole();
+
 }

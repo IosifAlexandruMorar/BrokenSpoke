@@ -1,5 +1,6 @@
 package ro.ubb.brokenspoke.controller;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,13 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+
+    @PostConstruct
+    public void initFirstUsers(){
+        if(this.loginService.getAllLogins().isEmpty()){
+            this.loginService.initFirstLongin();
+        }
+    }
 
     @GetMapping("/login")
     public ResponseEntity<List<Login>> getAllLogins() {

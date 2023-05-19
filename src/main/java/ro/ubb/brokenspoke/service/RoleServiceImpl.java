@@ -49,5 +49,12 @@ public class RoleServiceImpl implements RoleService{
         return roleRepository.findById(id).orElseThrow();
     }
 
+    @Override
+    public void initFirstRole() {
+        Role role = new Role();
+        role.setRoleName("Employee");
+        this.roleRepository.save(role);
+    }
+
 
 }

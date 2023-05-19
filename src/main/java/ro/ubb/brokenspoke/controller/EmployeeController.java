@@ -1,5 +1,6 @@
 package ro.ubb.brokenspoke.controller;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,12 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+   @PostConstruct
+    public void initFirstEmployee(){
+        if(this.employeeService.getAllEmployees().isEmpty()){
+            this.employeeService.initFirstEmployee();
+        }
+    }
 
     @GetMapping("/employee")
     public ResponseEntity<List<Employee>> getAllEmployees() {

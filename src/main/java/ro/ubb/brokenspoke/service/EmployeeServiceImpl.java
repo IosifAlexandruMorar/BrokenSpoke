@@ -3,9 +3,13 @@ package ro.ubb.brokenspoke.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ro.ubb.brokenspoke.model.BikeRepair;
 import ro.ubb.brokenspoke.model.Employee;
+import ro.ubb.brokenspoke.model.Role;
 import ro.ubb.brokenspoke.repository.EmployeeRepository;
+import ro.ubb.brokenspoke.repository.RoleRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +18,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
     @Override
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
@@ -24,6 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employeeRepository.save(employee);
 
     }
+
 
     @Override
     public Employee updateEmployee(Long id, Employee employee) {
@@ -68,5 +76,17 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
         return getAllEmployeesSorted;
 
+    }
+
+    @Override
+    public void initFirstEmployee() {
+        Employee employee = new Employee();
+        employee.setFirstName("Popescu");
+        employee.setLastName("Ion");
+        employee.setHireDate("2023.02.11");
+        Role role = this.roleRepository.findRoleByRoleName("Employee");
+        employee.setRole(role);
+
+        this.employeeRepository.save(employee);
     }
 }

@@ -3,9 +3,11 @@ package ro.ubb.brokenspoke.service;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ro.ubb.brokenspoke.model.Employee;
 import ro.ubb.brokenspoke.model.Login;
+import ro.ubb.brokenspoke.model.Role;
 import ro.ubb.brokenspoke.repository.EmployeeRepository;
 import ro.ubb.brokenspoke.repository.LoginRepository;
 
@@ -18,6 +20,13 @@ public class LoginServiceImpl implements LoginService{
 
     @Autowired
     private LoginRepository loginRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @Override
     public List<Login> getAllLogins() {
         return loginRepository.findAll();
@@ -26,7 +35,7 @@ public class LoginServiceImpl implements LoginService{
     @Override
     public Login saveLogin(Login login) {
         String plainPassword = login.getPassword();
-        String hashedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
+        String hashedPassword = passwordEncoder.encode(plainPassword); //BCrypt.hashpw(plainPassword, BCrypt.gensalt());
         login.setPassword(hashedPassword);
         return loginRepository.save(login);
 
@@ -80,6 +89,19 @@ public class LoginServiceImpl implements LoginService{
     }
 
     @Override
+    public void initFirstLongin() {
+        Login login = new Login();
+        login.setApproved(true);
+        Employee employee = this.employeeRepository.findById(2l).get();
+        login.setEmployee(employee);
+        login.setUserName("PopescuIon");
+        login.setPassword( passwordEncoder.encode("Popescu123!") );
+
+        this.loginRepository.save(login);
+
+    }
+
+    @Override
     public List<Login> getAllLoginsSorted(String column, String order) {
         List<Login> getAllLoginsSorted = null;
         if (Objects.equals(order, "desc")) {
@@ -90,6 +112,5 @@ public class LoginServiceImpl implements LoginService{
         return getAllLoginsSorted;
 
     }
-
 
 }

@@ -11,4 +11,5 @@ public interface EmployeeRepository  extends JpaRepository<Employee, Long> {
     @Query("SELECT e FROM Employee e WHERE e.lastName LIKE CONCAT ('%', :predicate, '%')")
     List<Employee> filterEmployeesByLastName(String predicate);
 
+
 }
