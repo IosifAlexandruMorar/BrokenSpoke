@@ -16,7 +16,7 @@ import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin/admin.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { ListEmployeesComponent } from './employee/list-employees/list-employees.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import {MatIconModule} from "@angular/material/icon";
@@ -26,11 +26,12 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatListModule} from "@angular/material/list";
-import {MatTableModule} from "@angular/material/table";
+import { MatTableModule } from "@angular/material/table";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSelectModule} from "@angular/material/select";
 import { HomeComponent } from './home/home.component';
+import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeComponent } from './home/home.component';
     AdminComponent,
     ListEmployeesComponent,
     RepairsComponent,
-    HomeComponent
+    HomeComponent,
+    ListRepairsComponent
   ],
   imports: [
     BrowserModule,
