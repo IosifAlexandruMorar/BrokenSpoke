@@ -1,1 +1,24 @@
-<p>list-repairs works!</p>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Client</th>
+    <th>Phone</th>
+    <th>Start</th>
+    <th>Due</th>
+    <th>Status</th>
+  </tr>
+  <tr *ngFor="let repair of repairs">
+    <td >{{repair.id}}</td>
+    <td>{{repair.description}}</td>
+    <td>{{repair.price}}</td>
+    <td>{{repair.clientName}}</td>
+    <td>{{repair.clientPhone}}</td>
+    <td>{{repair.startDate}}</td>
+    <td>{{repair.dueDate}}</td>
+    <td>{{repair.status}}</td>
+  </tr>
+  <tr>
+</table>
+
