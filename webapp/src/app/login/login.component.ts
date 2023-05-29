@@ -10,7 +10,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  isLoggedIn = false;
   constructor(private userService: UserService, private router:Router, private userAuthService: UserAuthService) { }
 
   ngOnInit(): void {

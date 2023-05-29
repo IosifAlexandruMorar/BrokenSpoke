@@ -32,6 +32,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSelectModule} from "@angular/material/select";
 import { HomeComponent } from './home/home.component';
 import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.component";
+import {BikeRepairService} from "./services/bike-repair.service";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.componen
       useClass:AuthInterceptor,
       multi:true
     },
-    UserService
+    UserService,
+    BikeRepairService
   ],
   bootstrap: [AppComponent]
 })
