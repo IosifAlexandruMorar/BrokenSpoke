@@ -37,7 +37,7 @@ public class Employee {
     private String hireDate;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "roleId", referencedColumnName = "roleId")
     @JsonIgnoreProperties("employees")
     private Role role;
