@@ -5,8 +5,8 @@ import {BikeRepair} from "../_model/bike-repair.model";
 
 @Injectable()
 export class BikeRepairService {
-  private bikeRepairget = 'http://localhost:8080/api/v1/bikerepair';
-  private bikeRepairURL = 'http://localhost:8080/api/v1';
+  private bikeRepairget = 'http://localhost:8083/api/v1/bikerepair';
+  private bikeRepairURL = 'http://localhost:8083/api/v1';
 
   constructor(private httpClient: HttpClient) {
   }

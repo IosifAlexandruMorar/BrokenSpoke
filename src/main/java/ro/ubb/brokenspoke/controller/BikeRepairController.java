@@ -11,7 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class BikeRepairController {
 
     @Autowired
@@ -19,6 +20,7 @@ public class BikeRepairController {
 
 
     @GetMapping("/bikerepair")
+
     public ResponseEntity<List<BikeRepair>> getAllBikeRepairs() {
         List<BikeRepair> bikeRepairList = bikeRepairService.getAllBikeRepairs();
         return ResponseEntity.ok().body(bikeRepairList);
