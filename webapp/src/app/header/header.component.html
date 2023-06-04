@@ -11,9 +11,17 @@
 </mat-toolbar>
 
 <mat-toolbar *ngIf="isLoggedIn()">
+  <div class="nav-buttons">
+    <div>
   <button mat-raised-button  routerLink="/">Home</button>
+    </div>
+    <div>
   <button *ngIf="isAdmin()" mat-raised-button routerLink="/employees/list">List employees</button>
+    </div>
+    <div>
   <button *ngIf="isEmployee()" mat-raised-button routerLink="/employee/repairs">List my repairs</button>
+    </div>
+  </div>
 </mat-toolbar>
 
 <app-employee *ngIf="isLoggedIn() && isEmployee()"></app-employee>
