@@ -14,4 +14,9 @@ export class BikeRepairService {
   getBikeRepair(): Observable<BikeRepair[]> {
     return this.httpClient.get<Array<BikeRepair>>(this.bikeRepairget);
   }
+
+  addBikeRepair(bikeRepair: BikeRepair): Observable<BikeRepair> {
+    console.log(bikeRepair)
+    return this.httpClient.post<BikeRepair>(`${this.bikeRepairURL}/bikerepair`, bikeRepair )
+  }
 }

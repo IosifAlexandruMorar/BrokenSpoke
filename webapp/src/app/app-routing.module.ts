@@ -9,6 +9,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {ListEmployeesComponent} from "./employee/list-employees/list-employees.component";
 import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.component";
 import {HomeComponent} from "./home/home.component";
+import {AddRepairComponent} from "./repairs/add-repair/add-repair.component";
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'admin',component:AdminComponent, canActivate:[AuthGuard],data:{role:['Admin']} },
   {path: 'employees/list',component:ListEmployeesComponent, canActivate:[AuthGuard],data:{role:['Admin']} },
   {path: 'employee/repairs',component:ListRepairsComponent, data:{role:['Employee']} },
+  {path: 'bikerepair/add', component: AddRepairComponent}
 ];
 
 @NgModule({

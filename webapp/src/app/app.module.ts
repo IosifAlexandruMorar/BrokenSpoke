@@ -33,6 +33,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { HomeComponent } from './home/home.component';
 import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.component";
 import {BikeRepairService} from "./services/bike-repair.service";
+import { AddRepairComponent } from './repairs/add-repair/add-repair.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {BikeRepairService} from "./services/bike-repair.service";
     ListEmployeesComponent,
     RepairsComponent,
     HomeComponent,
-    ListRepairsComponent
+    ListRepairsComponent,
+    AddRepairComponent
   ],
   imports: [
     BrowserModule,

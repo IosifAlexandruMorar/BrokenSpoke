@@ -1,6 +1,7 @@
-
-<p>works</p>
-<table>
+<div>
+<a [routerLink]="['/bikerepair/add']" class="button is-primary is-light">Add order</a>
+<table class="table is-striped is-hoverable is-fullwidth">
+  <thead>
   <tr>
     <th>Id</th>
     <th>Description</th>
@@ -11,6 +12,7 @@
     <th>Due</th>
     <th>Status</th>
   </tr>
+  </thead>
   <tr *ngFor="let repair of repairs">
     <td >{{repair.id}}</td>
     <td>{{repair.description}}</td>
@@ -23,4 +25,5 @@
   </tr>
   <tr>
 </table>
+</div>
 
