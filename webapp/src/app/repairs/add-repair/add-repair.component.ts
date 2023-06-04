@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class AddRepairComponent {
   bikeRepair = {
-    id: 0,
+    // id: 0,
     description: '',
     startDate: '',
     dueDate: '',

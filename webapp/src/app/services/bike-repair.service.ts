@@ -1,14 +1,15 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {BikeRepair} from "../_model/bike-repair.model";
+import {UserAuthService} from "./user-auth.service";
 
 @Injectable()
 export class BikeRepairService {
   private bikeRepairget = 'http://localhost:8083/api/v1/bikerepair';
   private bikeRepairURL = 'http://localhost:8083/api/v1';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private userAuthService: UserAuthService) {
   }
 
   getBikeRepair(): Observable<BikeRepair[]> {
@@ -17,6 +18,9 @@ export class BikeRepairService {
 
   addBikeRepair(bikeRepair: BikeRepair): Observable<BikeRepair> {
     console.log(bikeRepair)
-    return this.httpClient.post<BikeRepair>(`${this.bikeRepairURL}/bikerepair`, bikeRepair )
+    const token = this.userAuthService.getToken();
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.post<BikeRepair>(`${this.bikeRepairURL}/bikerepair`, bikeRepair, { headers } )
   }
 }

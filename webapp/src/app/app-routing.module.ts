@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'admin',component:AdminComponent, canActivate:[AuthGuard],data:{role:['Admin']} },
   {path: 'employees/list',component:ListEmployeesComponent, canActivate:[AuthGuard],data:{role:['Admin']} },
   {path: 'employee/repairs',component:ListRepairsComponent, data:{role:['Employee']} },
-  {path: 'bikerepair/add', component: AddRepairComponent}
+  {path: 'bikerepair/add', component: AddRepairComponent, }
 ];
 
 @NgModule({
