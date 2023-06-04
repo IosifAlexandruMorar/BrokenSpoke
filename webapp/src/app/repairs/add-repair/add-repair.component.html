@@ -1,0 +1,91 @@
+<div class="form-container">
+  <form (submit)="addBikeRepair()">
+
+    <div>
+      <label class="label">Description: </label>
+      <input
+        type="text"
+        [(ngModel)]="bikeRepair.description"
+        name="description"
+        class="input"
+        placeholder="Name"
+      />
+    </div>
+
+    <div>
+      <label>Start Date:</label>
+      <input
+        type="text"
+        [(ngModel)]="bikeRepair.startDate"
+        class="input"
+        placeholder="Start Date"
+        name="startDate"
+      />
+    </div>
+
+    <div>
+      <label>Due Date:</label>
+      <input
+        type="text"
+        [(ngModel)]="bikeRepair.dueDate"
+        class="input"
+        placeholder="Due Date"
+        name="dueDate"
+      />
+    </div>
+
+    <div>
+      <label>Client Name: </label>
+      <input
+        type="text"
+        [(ngModel)]="bikeRepair.clientName"
+        class="input"
+        name="clientName"
+        placeholder="Client name..."
+      />
+    </div>
+
+    <div>
+      <label>Client Phone: </label>
+      <input
+        type="number"
+        [(ngModel)]="bikeRepair.clientPhone"
+        class="input"
+        name="clientPhone"
+        placeholder="Phone no."
+      />
+    </div>
+
+    <div>
+      <label>Status: </label>
+      <input
+        type="text"
+        [(ngModel)]="bikeRepair.status"
+        class="input"
+        name="status"
+        placeholder="Status.."
+      />
+    </div>
+
+    <div>
+      <label>Price: </label>
+      <input
+        type="number"
+        [(ngModel)]="bikeRepair.price"
+        class="input"
+        name="price"
+        placeholder="Price"
+      />
+    </div>
+
+    <div class="button-container">
+      <div>
+        <button class="button is-primary is-light" type="submit">Add</button>
+      </div>
+
+      <div>
+        <button (click)="cancel()" class="button reset">Cancel, go back</button>
+      </div>
+    </div>
+  </form>
+</div>
