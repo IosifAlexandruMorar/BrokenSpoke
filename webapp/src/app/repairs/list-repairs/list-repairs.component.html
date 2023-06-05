@@ -11,10 +11,12 @@
     <th>Start</th>
     <th>Due</th>
     <th>Status</th>
+    <th>Assigned employee</th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tr *ngFor="let repair of repairs">
-    <td >{{repair.id}}</td>
+    <td >{{repair.repairId}}</td>
     <td>{{repair.description}}</td>
     <td>{{repair.price}}</td>
     <td>{{repair.clientName}}</td>
@@ -22,8 +24,104 @@
     <td>{{repair.startDate}}</td>
     <td>{{repair.dueDate}}</td>
     <td>{{repair.status}}</td>
+    <td>{{repair.employee.firstName}}</td>
+    <td>
+      <div class="buttons">
+      <button class="button is-info" (click)="startUpdate(repair)">Edit</button>
+      <button class="button is-danger"(click)="startDelete(repair)">Delete</button>
+      </div>
+    </td>
   </tr>
   <tr>
 </table>
 </div>
 
+<div id="update" class="modal" [ngClass]="{'is-active': markedForUpdate !==undefined}">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+
+      <form>
+        <input
+          type="text"
+          [(ngModel)]="repairsItem.description"
+          name="description"
+          placeholder="Description"
+        />
+        <br />
+        <input
+          type="text"
+          [(ngModel)]="repairsItem.price"
+          name="Price"
+          placeholder="Price"
+        />
+        <br />
+        <input
+          type="text"
+          [(ngModel)]="repairsItem.clientName"
+          name="Client name"
+          placeholder="Client Name"
+        />
+        <br />
+        <input
+          type="text"
+          [(ngModel)]="repairsItem.clientPhone"
+          name="Client phone number"
+          placeholder="Client phone number"
+        />
+        <br />
+        <input
+          type="text"
+          [(ngModel)]="repairsItem.startDate"
+          name="Start date"
+          placeholder="Start date"
+        />
+        <br />
+        <input
+          type="text"
+          [(ngModel)]="repairsItem.dueDate"
+          name="Due date"
+          placeholder="Due date"
+        />
+        <br />
+        <input
+          type="text"
+          [(ngModel)]="repairsItem.status"
+          name="Status"
+          placeholder="Status"
+        />
+        <br />
+        <select [(ngModel)]="repairsItem.employee.employeeId" (change)="selectEmployee(repairsItem.employee.employeeId)" name="assignedEmployeeId">
+          <option value="">Select an employee</option>
+          <option *ngFor="let employee of employees" [value]="employee.employeeId">
+            {{ employee.firstName }}
+          </option>
+        </select>
+      </form>
+      <p>Do you really want to update this bike repair?</p>
+      <div class ="buttons">
+        <button class="button is-danger" type="submit" (click)="confirmUpdate()">Yes</button>
+        <button class ="button is-link" (click)="cancelUpdate()">No</button>
+      </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close" (click)="cancelUpdate()"></button>
+  </div>
+</div>
+
+<div id="delete" class="modal" [ngClass]="{'is-active': markedForDeletion !==undefined}">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+      <p>Do you really want to delete this repair?</p>
+      <div class ="buttons">
+        <button class ="button is-danger" (click)="confirmDelete()">Yes</button>
+        <button class ="button is-link" (click)="cancelDelete()">No</button>
+      </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close" (click)="cancelDelete()"></button>
+  </div>
+</div>

@@ -23,4 +23,20 @@ export class BikeRepairService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.httpClient.post<BikeRepair>(`${this.bikeRepairURL}/bikerepair`, bikeRepair, { headers } )
   }
+
+  updateBikeRepair(bikeRepair: BikeRepair): Observable<BikeRepair> {
+    const token = this.userAuthService.getToken();
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.put<BikeRepair>(`${this.bikeRepairURL}/bikerepair/id=${bikeRepair.repairId}`, bikeRepair, { headers } )
+  }
+
+  deleteBikeRepair(id: number): Observable<BikeRepair> {
+    const token = this.userAuthService.getToken();
+    console.log(token);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.delete<BikeRepair>(`${this.bikeRepairURL}/bikerepair/id=${id}`);
+  }
+
+
 }

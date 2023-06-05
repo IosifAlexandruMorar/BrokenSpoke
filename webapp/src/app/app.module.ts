@@ -34,6 +34,7 @@ import { HomeComponent } from './home/home.component';
 import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.component";
 import {BikeRepairService} from "./services/bike-repair.service";
 import { AddRepairComponent } from './repairs/add-repair/add-repair.component';
+import {EmployeeService} from "./services/employee.service";
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { AddRepairComponent } from './repairs/add-repair/add-repair.component';
       multi:true
     },
     UserService,
-    BikeRepairService
+    BikeRepairService,
+    EmployeeService
   ],
   bootstrap: [AppComponent]
 })

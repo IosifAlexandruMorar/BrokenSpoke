@@ -38,7 +38,7 @@ public class BikeRepairController {
     }
 
     @PutMapping("/bikerepair/id={id}")
-    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
+//    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
     public BikeRepair updateBikeRepair(@PathVariable(value = "id") Long bikeRepairId,
                                  @Valid @RequestBody BikeRepair bikeRepairDetails) {
         BikeRepair bikeRepair = bikeRepairService.updateBikeRepair(bikeRepairId, bikeRepairDetails);
@@ -46,7 +46,7 @@ public class BikeRepairController {
     }
 
     @DeleteMapping("/bikerepair/id={id}")
-    @CrossOrigin(origins = "*", allowedHeaders = "Requestor-Type", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"})
+//    @CrossOrigin(origins = "*", allowedHeaders = "Requestor-Type", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"})
     public void deleteBikeRepair(@PathVariable(value = "id") Long bikeRepairId) {
         bikeRepairService.deleteBikeRepair(bikeRepairId);
     }

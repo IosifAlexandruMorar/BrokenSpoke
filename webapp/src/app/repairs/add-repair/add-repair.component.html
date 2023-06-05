@@ -77,6 +77,15 @@
         placeholder="Price"
       />
     </div>
+    <div>
+      <label>Assigned employee: </label>
+      <select [(ngModel)]="bikeRepair.employee.employeeId"  name="assignedEmployeeId">
+        <option value="">Select an employee</option>
+        <option *ngFor="let employee of employees" [value]="employee.employeeId">
+          {{ employee.firstName }}
+        </option>
+      </select>
+    </div>
 
     <div class="button-container">
       <div>

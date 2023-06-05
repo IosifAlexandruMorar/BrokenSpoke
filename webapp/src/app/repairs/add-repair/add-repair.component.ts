@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {BikeRepair} from "../../_model/bike-repair.model";
 import {BikeRepairService} from "../../services/bike-repair.service";
 import {Router} from "@angular/router";
+import {EmployeeModel} from "../../_model/employee.model";
+import {EmployeeService} from "../../services/employee.service";
 
 @Component({
   selector: 'app-add-repair',
@@ -17,12 +19,22 @@ export class AddRepairComponent {
     clientName: '',
     clientPhone: 0,
     status: '',
-    price: 0, } as BikeRepair;
+    price: 0,
+    employeeId: 0,
+    employee: {
+      employeeId: 0,
+      firstName: '',
+      lastName: '',
+      hireDate: ''
+    }} as BikeRepair;
 
-  constructor(private bikeRepairService: BikeRepairService,
+  employees: EmployeeModel[] = [];
+  constructor(private bikeRepairService: BikeRepairService, private employeeService: EmployeeService,
               private route: Router) { }
 
   ngOnInit(): void {
+    this.employeeService.getEmployees()
+      .subscribe((employees: EmployeeModel[]) => this.employees = employees);
   }
 
   addBikeRepair() {

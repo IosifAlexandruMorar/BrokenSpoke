@@ -1,5 +1,7 @@
+import {EmployeeModel} from "./employee.model";
+
 export interface BikeRepair {
-  id: number;
+  repairId?: number;
   description: string;
   startDate: string;
   dueDate: string;
@@ -7,4 +9,7 @@ export interface BikeRepair {
   clientPhone: number;
   status: string;
   price: number;
+  employeeId: number;
+
+  employee: EmployeeModel;
 }
