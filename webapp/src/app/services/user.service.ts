@@ -17,8 +17,11 @@ export class UserService {
   );
   constructor(private httpClient:HttpClient, private userAuthService:UserAuthService) { }
 
-  public logInUser(logInUser: LogInDto){
+  signUpUser(formData: SignupDto) {
+    return this.httpClient.post<SignupDto>(`${this.userUrl}/api/v1/employee`, formData);
+  }
 
+  public logInUser(logInUser: LogInDto){
     return this.httpClient.post(this.userUrl+"/authenticate",logInUser, {headers:this.requestHeader});
   }
 

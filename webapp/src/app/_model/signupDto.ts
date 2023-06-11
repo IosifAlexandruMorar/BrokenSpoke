@@ -4,6 +4,6 @@ export interface SignupDto{
   lastName:string;
   email:string;
   password:string;
-  hireDate:string;
-  idRole:number;
+  // hireDate:string;
+  // idRole:number;
 }
