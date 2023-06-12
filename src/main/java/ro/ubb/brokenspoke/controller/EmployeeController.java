@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import ro.ubb.brokenspoke.dto.SignUpDto;
 import ro.ubb.brokenspoke.model.Employee;
+import ro.ubb.brokenspoke.model.Login;
 import ro.ubb.brokenspoke.service.EmployeeService;
+import ro.ubb.brokenspoke.service.LoginService;
 
 import java.util.List;
 
@@ -18,6 +21,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private LoginService loginService;
 
    @PostConstruct
     public void initFirstEmployee(){
@@ -57,9 +63,24 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employee);
     }
 
-    @PostMapping("/employee")
-    public Employee createEmployee(@Valid @RequestBody Employee employee) {
-        return employeeService.saveEmployee(employee);
+    @PostMapping("/signup")
+    public SignUpDto createEmployee(@Valid @RequestBody SignUpDto employee) {
+        Employee newEmployee = employeeService.saveEmployee(employee);
+        Login login = new Login();
+        login.setPassword(employee.getPassword());
+        login.setApproved(false);
+        login.setUserName(employee.getUserName());
+        login.setEmployee(newEmployee);
+        Login newLogin = this.loginService.saveLogin(login);
+        return SignUpDto.builder()
+                .userName(newLogin.getUserName())
+                .firstName(newEmployee.getFirstName())
+                .lastName((newEmployee.getLastName()))
+                .email(employee.getEmail())
+                .password(newLogin.getPassword())
+                .hireDate(newEmployee.getHireDate())
+                .idRole(newEmployee.getRole().getRoleId())
+                .build();
     }
 
     @PutMapping("/employee/id={id}")

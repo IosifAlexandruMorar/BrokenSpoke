@@ -1,3 +1,4 @@
+
 export interface SignupDto{
   userName:string;
   firstName:string;

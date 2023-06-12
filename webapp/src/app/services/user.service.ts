@@ -22,6 +22,10 @@ export class UserService {
     return this.httpClient.post(this.userUrl+"/authenticate",logInUser, {headers:this.requestHeader});
   }
 
+  signUpUser(formData: SignupDto) {
+    return this.httpClient.post<SignupDto>(`${this.userUrl}/api/v1/signup`, formData);
+  }
+
   // @ts-ignore
   public roleMatch(allowedRoles) :boolean{
     let isMatch = false;

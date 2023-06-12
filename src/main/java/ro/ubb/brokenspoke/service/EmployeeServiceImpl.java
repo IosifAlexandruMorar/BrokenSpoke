@@ -2,10 +2,13 @@ package ro.ubb.brokenspoke.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ro.ubb.brokenspoke.config.JwtRequestFilter;
+import ro.ubb.brokenspoke.dto.SignUpDto;
 import ro.ubb.brokenspoke.model.BikeRepair;
 import ro.ubb.brokenspoke.model.Employee;
+import ro.ubb.brokenspoke.model.Login;
 import ro.ubb.brokenspoke.model.Role;
 import ro.ubb.brokenspoke.repository.EmployeeRepository;
 import ro.ubb.brokenspoke.repository.LoginRepository;
@@ -26,14 +29,23 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Autowired
     private LoginRepository loginRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Override
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
     @Override
-    public Employee saveEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public Employee saveEmployee(SignUpDto employee) {
+        Employee newEmployee = new Employee();
+        newEmployee.setFirstName(employee.getFirstName());
+        newEmployee.setLastName(employee.getLastName());
+        newEmployee.setHireDate(employee.getHireDate());
+        Role role = this.roleRepository.findRoleByRoleName("Employee");
+        newEmployee.setRole(role);
+        return this.employeeRepository.save(newEmployee);
 
     }
 
