@@ -6,5 +6,6 @@ export interface SignupDto{
   email:string;
   password:string;
   hireDate:string;
+  isApproved: boolean;
   idRole:number;
 }

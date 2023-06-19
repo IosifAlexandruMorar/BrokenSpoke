@@ -1,1 +1,6 @@
-<p>list-employees works!</p>
+<ul>
+  <li *ngFor="let employee of employeesToApprove">
+    {{ employee.firstName }} - {{ employee.lastName }} - {{ employee.hireDate }} - {{ employee.isApproved }}
+  </li>
+</ul>
+

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserAuthService} from "./user-auth.service";
 import {SignupDto} from "../_model/signupDto";
 import {LogInDto} from "../_model/logInDto";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,13 @@ export class UserService {
 
   public getAllEmployees(){
     return this.httpClient.get<Array<SignupDto>>(this.userUrl + "/employees/list");
+  }
+
+  approveLogin(loginId: number, isApproved: boolean): Observable<SignupDto> {
+    const url = `${this.userUrl}/logins/${loginId}`;
+    const updateData = { isApproved };
+
+    return this.httpClient.patch<SignupDto>(url, updateData);
   }
 
 

@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ro.ubb.brokenspoke.model.Login;
 import ro.ubb.brokenspoke.service.LoginService;
@@ -78,6 +79,14 @@ public class LoginController {
     public boolean checkPassword(@PathVariable(value = "user") String user,
                                  @PathVariable(value = "password") String password) {
         return loginService.checkPassword(user, password);
+    }
+
+
+    @PutMapping("/login/approve/{id}-{isApproved}")
+    @PreAuthorize("hasRole('Admin')")
+    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
+    public Login approveLogin(@PathVariable(value = "id") Long loginId, @PathVariable(value = "isApproved") boolean isApproved) {
+        return loginService.approveLogin(loginId, isApproved);
     }
 
 }

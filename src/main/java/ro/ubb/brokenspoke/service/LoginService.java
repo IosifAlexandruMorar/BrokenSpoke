@@ -24,4 +24,6 @@ public interface LoginService {
     Boolean checkPassword(String user, String password);
 
     void initFirstLongin();
+
+    Login approveLogin(Long id, boolean isApproved);
 }

@@ -14,6 +14,7 @@ export class SignupComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
+    hireDate: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
@@ -23,6 +24,7 @@ export class SignupComponent {
     lastName:"",
     email:"",
     password:"",
+    isApproved: false,
     hireDate:"",
     idRole:0
   }
@@ -41,6 +43,8 @@ export class SignupComponent {
     this.formData.firstName = this.signupForm.value.firstName;
     this.formData.lastName = this.signupForm.value.lastName;
     this.formData.email = this.signupForm.value.email;
+    this.formData.hireDate = this.signupForm.value.hireDate;
+    this.formData.isApproved = false;
     this.formData.password = this.signupForm.value.password;
     this.formData.userName = this.signupForm.value.userName;
 

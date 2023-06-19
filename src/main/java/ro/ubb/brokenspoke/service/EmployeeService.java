@@ -25,4 +25,5 @@ public interface EmployeeService {
     void initFirstEmployee();
 
     Employee getUserLoggedIn();
+
 }

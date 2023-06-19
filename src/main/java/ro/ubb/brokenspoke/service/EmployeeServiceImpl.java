@@ -112,4 +112,5 @@ public class EmployeeServiceImpl implements EmployeeService{
         String currentUserLoggedIn = JwtRequestFilter.CURRENT_USER_LOGGED_IN;
         return loginRepository.findLoginByUserName(currentUserLoggedIn).getEmployee();
     }
+
 }

@@ -1,4 +1,4 @@
-package ro.ubb.brokenspoke.controller;
+package ro.ubb.brokenspoke.Controller;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
 public class EmployeeController {
 
     @Autowired
@@ -34,7 +34,8 @@ public class EmployeeController {
 
     //only for employees is available this page
     @GetMapping("/employee")
-    @PreAuthorize("hasRole('Employee')")
+//    @PreAuthorize("hasRole('Employee')")
+    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
     public String forEmployee() {
         return "Welcome, ";
     }
@@ -42,6 +43,7 @@ public class EmployeeController {
     //only for admins is available this page
     @GetMapping("/admin")
     @PreAuthorize("hasRole('Admin')")
+    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
     public String forAdmin() {
         return "Welcome, ";
     }
@@ -82,6 +84,7 @@ public class EmployeeController {
                 .idRole(newEmployee.getRole().getRoleId())
                 .build();
     }
+
 
     @PutMapping("/employee/id={id}")
     @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )

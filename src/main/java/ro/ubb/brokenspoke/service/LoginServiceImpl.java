@@ -113,4 +113,14 @@ public class LoginServiceImpl implements LoginService{
 
     }
 
+    @Override
+    public Login approveLogin(Long id, boolean isApproved) {
+        Login loginToApprove = loginRepository.findById(id).orElseThrow();
+        loginToApprove.setApproved(isApproved);
+
+        loginRepository.save(loginToApprove);
+
+        return loginToApprove;
+    }
+
 }
