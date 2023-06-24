@@ -13,6 +13,8 @@ public interface LoginService {
 
     Login updateLogin(Long id, Login login);
 
+    Login updateLoginStatus(Long id, boolean status);
+
     void deleteLogin(Long id);
 
     Login getLoginById(Long id);

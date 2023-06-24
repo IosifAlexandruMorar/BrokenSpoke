@@ -1,1 +1,9 @@
-<p>list-employees works!</p>
+
+<ul>
+  <li *ngFor="let employee of logins">
+    {{ employee.userName }}
+    <mat-slide-toggle [checked]="employee.approved" (change)="toggleApproved(employee)">
+      {{ employee.approved ? 'Approved' : 'Not Approved' }}
+    </mat-slide-toggle>
+  </li>
+</ul>

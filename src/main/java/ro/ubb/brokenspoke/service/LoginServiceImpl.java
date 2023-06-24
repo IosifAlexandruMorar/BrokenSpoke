@@ -64,6 +64,14 @@ public class LoginServiceImpl implements LoginService{
     }
 
     @Override
+    public Login updateLoginStatus(Long id, boolean status) {
+        Login login = loginRepository.findById(id).orElseThrow();
+        login.setApproved(status);
+        loginRepository.save(login);
+        return login;
+    }
+
+    @Override
     public void deleteLogin(Long id) {
         loginRepository.deleteById(id);
 

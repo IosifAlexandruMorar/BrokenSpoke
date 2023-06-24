@@ -3,6 +3,7 @@ package ro.ubb.brokenspoke.controller;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.ubb.brokenspoke.model.Login;
@@ -12,7 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class LoginController {
 
     @Autowired
@@ -44,11 +46,12 @@ public class LoginController {
     }
 
     @PutMapping("/login/id={id}")
-    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
+//    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
     public Login updateLogin(@PathVariable(value = "id") Long loginId,
                                  @Valid @RequestBody Login loginDetails) {
         Login login = loginService.updateLogin(loginId, loginDetails);
         return login;
+
     }
 
     @DeleteMapping("/login/id={id}")
@@ -78,6 +81,14 @@ public class LoginController {
     public boolean checkPassword(@PathVariable(value = "user") String user,
                                  @PathVariable(value = "password") String password) {
         return loginService.checkPassword(user, password);
+    }
+
+    @PutMapping("/login/set_status/id={id}")
+    public Login updateStatusLogin(@PathVariable(value = "id") Long loginId,
+                             @Valid @RequestBody Boolean status) {
+        Login login = loginService.updateLoginStatus(loginId, status);
+        return login;
+
     }
 
 }

@@ -35,6 +35,7 @@ import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.componen
 import {BikeRepairService} from "./services/bike-repair.service";
 import { AddRepairComponent } from './repairs/add-repair/add-repair.component';
 import {EmployeeService} from "./services/employee.service";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -51,28 +52,29 @@ import {EmployeeService} from "./services/employee.service";
     ListRepairsComponent,
     AddRepairComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatTableModule,
-    MatGridListModule,
-    MatBadgeModule,
-    MatAutocompleteModule,
-    MatListModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        RouterModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatTableModule,
+        MatGridListModule,
+        MatBadgeModule,
+        MatAutocompleteModule,
+        MatListModule,
+        MatSelectModule,
+        MatSlideToggleModule
+    ],
   providers: [
     AuthGuard,
     {

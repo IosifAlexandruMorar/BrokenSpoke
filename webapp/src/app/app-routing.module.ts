@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'forbidden', component: ForbiddenComponent},
   {path: 'employee',component:EmployeeComponent, canActivate:[AuthGuard],data:{role:['Employee']}},
   {path: 'admin',component:AdminComponent, canActivate:[AuthGuard],data:{role:['Admin']} },
-  {path: 'employees/list',component:ListEmployeesComponent, canActivate:[AuthGuard],data:{role:['Admin']} },
+  {path: 'employees/list',component:ListEmployeesComponent, data:{role:['Admin']} },
   {path: 'employee/repairs',component:ListRepairsComponent, data:{role:['Employee']} },
   {path: 'bikerepair/add', component: AddRepairComponent,data:{role:['Employee']}}
 ];

@@ -48,8 +48,11 @@ public class JwtService implements UserDetailsService {
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
 
         Employee user = this.loginRepository.findLoginByUserName(userName).getEmployee();
-
-        return new JwtResponse(user, newGeneratedToken);
+        JwtResponse jwtResponse= new JwtResponse();
+        if (loginRepository.findLoginByUserName(userName).isApproved()){
+            return new JwtResponse(user, newGeneratedToken);
+        }
+        return jwtResponse;
     }
 
     @Override
