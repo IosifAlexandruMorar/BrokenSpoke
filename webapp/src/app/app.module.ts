@@ -36,6 +36,7 @@ import {BikeRepairService} from "./services/bike-repair.service";
 import { AddRepairComponent } from './repairs/add-repair/add-repair.component';
 import {EmployeeService} from "./services/employee.service";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { ListRepairsEmployeeComponent } from './repairs/list-repairs-employee/list-repairs-employee.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     RepairsComponent,
     HomeComponent,
     ListRepairsComponent,
-    AddRepairComponent
+    AddRepairComponent,
+    ListRepairsEmployeeComponent
   ],
     imports: [
         BrowserModule,

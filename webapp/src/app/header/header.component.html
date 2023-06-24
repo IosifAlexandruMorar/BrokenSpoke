@@ -19,7 +19,10 @@
   <button *ngIf="isAdmin()" mat-raised-button routerLink="/employees/list">List employees</button>
     </div>
     <div>
-  <button *ngIf="isEmployee()" mat-raised-button routerLink="/employee/repairs">List my repairs</button>
+  <button *ngIf="isEmployee()" mat-raised-button routerLink="/employee/repairs">List all repairs</button>
+    </div>
+    <div>
+      <button *ngIf="isEmployee()" mat-raised-button color="primary" routerLink="/employee/my-repairs">List my repairs</button>
     </div>
   </div>
 </mat-toolbar>

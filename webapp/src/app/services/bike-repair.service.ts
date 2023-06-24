@@ -6,6 +6,7 @@ import {UserAuthService} from "./user-auth.service";
 
 @Injectable()
 export class BikeRepairService {
+  private bikeRepairEmployeeGet = 'http://localhost:8083/api/v1/bikerepair/user';
   private bikeRepairget = 'http://localhost:8083/api/v1/bikerepair';
   private bikeRepairURL = 'http://localhost:8083/api/v1';
 
@@ -15,6 +16,10 @@ export class BikeRepairService {
   getBikeRepair(): Observable<BikeRepair[]> {
     return this.httpClient.get<Array<BikeRepair>>(this.bikeRepairget);
   }
+  getBikeRepairsByEmployee(): Observable<BikeRepair[]> {
+    return this.httpClient.get<Array<BikeRepair>>(this.bikeRepairEmployeeGet);
+  }
+
 
   addBikeRepair(bikeRepair: BikeRepair): Observable<BikeRepair> {
     console.log(bikeRepair)

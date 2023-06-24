@@ -18,4 +18,5 @@ public interface BikeRepairRepository extends JpaRepository<BikeRepair, Long> {
     List<BikeRepair> filterBikeRepairsByStatus(String predicate);
 
 
+    List<BikeRepair> findAllByEmployee_EmployeeId(Long employeeId);
 }

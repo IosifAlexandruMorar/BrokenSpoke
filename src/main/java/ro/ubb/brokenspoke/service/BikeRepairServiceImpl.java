@@ -9,6 +9,7 @@ import ro.ubb.brokenspoke.model.Login;
 import ro.ubb.brokenspoke.repository.BikeRepairRepository;
 import ro.ubb.brokenspoke.repository.EmployeeRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -18,6 +19,8 @@ public class BikeRepairServiceImpl implements BikeRepairService{
 
     @Autowired
     private BikeRepairRepository bikeRepairRepository;
+    @Autowired
+    private EmployeeService employeeService;
     @Override
     public List<BikeRepair> getAllBikeRepairs() {
         return bikeRepairRepository.findAll();
@@ -84,5 +87,14 @@ public class BikeRepairServiceImpl implements BikeRepairService{
         }
         return getAllBikeRepairsSorted;
 
+    }
+    @Override
+    public List<BikeRepair> getAllBikeRepairsByEmployeeId() {
+        Employee loggedInEmployee = employeeService.getUserLoggedIn();
+        if (loggedInEmployee != null) {
+            Long employeeId = loggedInEmployee.getEmployeeId();
+            return bikeRepairRepository.findAllByEmployee_EmployeeId(employeeId);
+        }
+        return Collections.emptyList();
     }
 }

@@ -1,5 +1,8 @@
 package ro.ubb.brokenspoke.controller;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -83,6 +86,10 @@ public class BikeRepairController {
         List<BikeRepair> bikeRepairList = bikeRepairService.filterBikeRepairsByStatus(status);
         return bikeRepairList;
     }
+    @GetMapping("/bikerepair/user")
+    public ResponseEntity<List<BikeRepair>> getAllBikeRepairsForLoggedInUser() {
+        List<BikeRepair> bikeRepairList = bikeRepairService.getAllBikeRepairsByEmployeeId();
+        return ResponseEntity.ok().body(bikeRepairList);
+    }
+    }
 
-
-}

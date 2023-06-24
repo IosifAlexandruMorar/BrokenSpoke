@@ -25,4 +25,6 @@ public interface BikeRepairService {
     List<BikeRepair> filterBikeRepairsByStatus(String predicate);
 
     List<BikeRepair> getAllBikeRepairsSorted(String column, String predicate);
+
+    List<BikeRepair> getAllBikeRepairsByEmployeeId();
 }
