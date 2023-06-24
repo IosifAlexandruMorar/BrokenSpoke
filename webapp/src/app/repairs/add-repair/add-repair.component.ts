@@ -44,11 +44,11 @@ export class AddRepairComponent {
       .addBikeRepair(this.bikeRepair)
       .subscribe((data: BikeRepair) => {
         alert("New item added successfully!");
-        this.route.navigate(['/bikerepair']);
+        this.route.navigate(['/employee/repairs']);
       })
   }
 
   cancel(): void {
-    this.route.navigate(['/bikerepair']);
+    this.route.navigate(['/employee/repairs']);
   }
 }
