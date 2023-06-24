@@ -1,5 +1,6 @@
 
 export interface SignupDto{
+  employeeId?:number;
   userName:string;
   firstName:string;
   lastName:string;
@@ -7,4 +8,5 @@ export interface SignupDto{
   password:string;
   hireDate:string;
   idRole:number;
+
 }

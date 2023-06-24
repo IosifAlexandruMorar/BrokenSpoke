@@ -11,6 +11,8 @@ import {ListRepairsComponent} from "./repairs/list-repairs/list-repairs.componen
 import {HomeComponent} from "./home/home.component";
 import {AddRepairComponent} from "./repairs/add-repair/add-repair.component";
 import {ListRepairsEmployeeComponent} from "./repairs/list-repairs-employee/list-repairs-employee.component";
+import {UpdatePasswordComponent} from "./update-password/update-password.component";
+
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path: 'employees/list',component:ListEmployeesComponent, data:{role:['Admin']} },
   {path: 'employee/repairs',component:ListRepairsComponent, data:{role:['Employee']} },
   {path: 'employee/my-repairs',component:ListRepairsEmployeeComponent, data:{role:['Employee']} },
-  {path: 'bikerepair/add', component: AddRepairComponent,data:{role:['Employee']}}
+  {path: 'bikerepair/add', component: AddRepairComponent,data:{role:['Employee']}},
+  {path: 'employee/changePassword',component: UpdatePasswordComponent,data:{role:['Employee']}}
 ];
 
 @NgModule({

@@ -37,6 +37,7 @@ import { AddRepairComponent } from './repairs/add-repair/add-repair.component';
 import {EmployeeService} from "./services/employee.service";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { ListRepairsEmployeeComponent } from './repairs/list-repairs-employee/list-repairs-employee.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ListRepairsEmployeeComponent } from './repairs/list-repairs-employee/li
     HomeComponent,
     ListRepairsComponent,
     AddRepairComponent,
-    ListRepairsEmployeeComponent
+    ListRepairsEmployeeComponent,
+    UpdatePasswordComponent
   ],
     imports: [
         BrowserModule,

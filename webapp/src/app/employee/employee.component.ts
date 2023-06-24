@@ -11,6 +11,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class EmployeeComponent implements OnInit {
   userName:string = "";
+  employeeId:number | undefined;
   message: string | undefined;
   constructor(private router:Router, private userService:UserService, private userAuthService:UserAuthService) { }
 
@@ -41,6 +42,7 @@ export class EmployeeComponent implements OnInit {
   getUserLoggedIn(){
     this.userService.getLoggedInUser().subscribe(resp =>{
       this.userName = resp.firstName;
+      this.employeeId = resp.employeeId;
     },(error:HttpErrorResponse) =>{
       console.log(error);
     });

@@ -55,7 +55,11 @@
     </div>
 
     <div class="field">
-      <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+      <button class ="button is-link" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+    </div>
+    <div class="notification is-info is-light" *ngIf="showNotification">
+      <button class="delete" (click)="closeNotification()"></button>
+      You have successfully signed up! Your Admin will approve your account and then you can access the site. Thank you!
     </div>
   </form>
 </div>

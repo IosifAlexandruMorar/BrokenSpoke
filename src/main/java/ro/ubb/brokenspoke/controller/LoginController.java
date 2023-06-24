@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ro.ubb.brokenspoke.dto.UpdatePasswordDTO;
 import ro.ubb.brokenspoke.model.Login;
 import ro.ubb.brokenspoke.service.LoginService;
 
@@ -45,13 +46,19 @@ public class LoginController {
         return loginService.saveLogin(login);
     }
 
+//    @PutMapping("/login/id={id}")
+////    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
+//    public Login updateLogin(@PathVariable(value = "id") Long loginId,
+//                                 @Valid @RequestBody Login loginDetails) {
+//        Login login = loginService.updateLogin(loginId, loginDetails);
+//        return login;
+//
+//    }
     @PutMapping("/login/id={id}")
-//    @CrossOrigin(origins = "*", exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"} )
     public Login updateLogin(@PathVariable(value = "id") Long loginId,
-                                 @Valid @RequestBody Login loginDetails) {
-        Login login = loginService.updateLogin(loginId, loginDetails);
+                             @Valid @RequestBody UpdatePasswordDTO updatePasswordDTO) {
+        Login login = loginService.updateLogin(loginId, updatePasswordDTO.getInitialPassword(), updatePasswordDTO.getNewPassword());
         return login;
-
     }
 
     @DeleteMapping("/login/id={id}")

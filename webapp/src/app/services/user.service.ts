@@ -61,5 +61,9 @@ export class UserService {
     return this.httpClient.get<Array<SignupDto>>(this.userUrl + "/employees/list");
   }
 
+  updatePassword(loginId: number, initialPassword: string, newPassword: string) {
+    const body = { initialPassword, newPassword };
 
+    return this.httpClient.put(`${this.userUrl}/api/v1/login/id=${loginId}`, body);
+  }
 }

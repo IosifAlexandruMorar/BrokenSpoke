@@ -16,7 +16,7 @@ export class SignupComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
-
+  showNotification: boolean = false
   formData: SignupDto ={
     userName:"",
     firstName:"",
@@ -47,11 +47,16 @@ export class SignupComponent {
     this.userService.signUpUser(this.formData).subscribe(
       response => {
         console.log('Sign up successful:', response);
+        this.showNotification = true;
         this.signupForm.reset();
       },
       error => {
         console.error('Sign-up failed: ', error);
       }
     );
+  }
+
+  closeNotification() {
+    this.showNotification = false;
   }
 }

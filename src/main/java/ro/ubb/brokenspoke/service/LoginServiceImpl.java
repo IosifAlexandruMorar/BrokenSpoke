@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ro.ubb.brokenspoke.model.Employee;
 import ro.ubb.brokenspoke.model.Login;
-import ro.ubb.brokenspoke.model.Role;
 import ro.ubb.brokenspoke.repository.EmployeeRepository;
 import ro.ubb.brokenspoke.repository.LoginRepository;
 
@@ -40,29 +39,6 @@ public class LoginServiceImpl implements LoginService{
         return loginRepository.save(login);
 
     }
-
-    @Override
-    public Login updateLogin(Long id, Login login) {
-        Login loginUpdate = loginRepository.findById(id).orElseThrow();
-
-        String plainPassword = login.getPassword();
-        String hashedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
-
-        loginUpdate.setPassword(hashedPassword);
-        loginUpdate.setEmployee(loginUpdate.getEmployee());
-        loginUpdate.setUserName(login.getUserName());
-
-        if (loginUpdate.isApproved()) {
-            loginUpdate.setApproved(true);
-        } else {
-            loginUpdate.setApproved(login.isApproved());
-        }
-
-        loginRepository.save(loginUpdate);
-
-        return loginUpdate;
-    }
-
     @Override
     public Login updateLoginStatus(Long id, boolean status) {
         Login login = loginRepository.findById(id).orElseThrow();
@@ -120,5 +96,18 @@ public class LoginServiceImpl implements LoginService{
         return getAllLoginsSorted;
 
     }
-
+    @Override
+    public Login updateLogin(Long id, String initialPassword, String newPassword) {
+        Login loginUpdate = loginRepository.findLoginByEmployee_EmployeeId(id).orElseThrow();
+        String storedHashedPassword = loginUpdate.getPassword();
+        boolean isPasswordCorrect = BCrypt.checkpw(initialPassword, storedHashedPassword);
+        if (!isPasswordCorrect) {
+            throw new IllegalArgumentException("Current password is incorrect!");
+        }
+        // set passwprd
+        String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+        loginUpdate.setPassword(hashedPassword);
+        loginRepository.save(loginUpdate);
+        return loginUpdate;
+    }
 }

@@ -11,7 +11,7 @@ public interface LoginService {
 
     Login saveLogin(Login login);
 
-    Login updateLogin(Long id, Login login);
+    Login updateLogin(Long id, String initialPassword, String newPassword);
 
     Login updateLoginStatus(Long id, boolean status);
 
@@ -27,3 +27,5 @@ public interface LoginService {
 
     void initFirstLongin();
 }
+
+
