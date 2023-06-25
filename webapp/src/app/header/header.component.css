@@ -26,8 +26,6 @@ ng-container{
   background-color: forestgreen;
 }
 
-
-
 html{
   background-color: black;
 }
@@ -40,5 +38,12 @@ mat-toolbar{
  display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  gap: 10px;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
   gap: 10px;
 }

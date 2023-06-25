@@ -2,9 +2,11 @@
   <ng-container>
     <h1>BROKENSPOKE</h1>
     <span class="example-spacer"></span>
+    <div class="auth-buttons">
 
     <button *ngIf="! isLoggedIn()" mat-raised-button color="primary" routerLink="/login">Log In</button>
     <button *ngIf="! isLoggedIn()" mat-raised-button color="primary" routerLink="/signup">Sign Up</button>
+    </div>
     <button *ngIf="isLoggedIn()" mat-raised-button color="accent" (click)="logout()">Log Out</button>
   </ng-container>
 
